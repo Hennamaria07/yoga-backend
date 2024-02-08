@@ -43,7 +43,7 @@ const registerUser = async (req, res) => {
             service: 'gmail',
             auth: {
                 user: 'hennamaria2001@gmail.com',
-                pass: 'jevb bajh sbko jcyq'
+                pass: process.env.EMAIL_PASSWORD
             }
         });
 
