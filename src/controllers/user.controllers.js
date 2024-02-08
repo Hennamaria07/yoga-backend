@@ -69,8 +69,7 @@ const registerUser = async (req, res) => {
         
         Get Started:
         
-        Log in to Your Account: Use the credentials provided to log in to our website and access your member dashboard.
-        Explore Our Classes: Browse our class schedule and book your first session. Your journey to a more balanced and healthy life starts now! Join Our Community: Connect with fellow members through our forums and social media groups to share experiences, tips, and encouragement. We're here to support you every step of the way. If you have any questions or need assistance, please don't hesitate to reach out to us at greatfitness@gmail.com.
+        Log in to Your Account: Use the credentials provided to log in to our website and access your member dashboard.Explore Our Classes: Browse our class schedule and book your first session. Your journey to a more balanced and healthy life starts now! Join Our Community: Connect with fellow members through our forums and social media groups to share experiences, tips, and encouragement. We're here to support you every step of the way. If you have any questions or need assistance, please don't hesitate to reach out to us at greatfitness@gmail.com.
         
         Thank you for choosing A Great Fitness. We can't wait to be a part of your wellness journey and see the incredible transformations you'll achieve.`
         };
