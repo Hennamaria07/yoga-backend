@@ -5,7 +5,8 @@ const cookieParser = require("cookie-parser");
 const app = express();
 app.use(cors({
     origin: "https://great-fitness-yoga-studio.netlify.app",
-    credentials: true
+    credentials: true,
+    optionsSuccessStatus: 200
 }));
 
 app.use(express.json({limit: "16kb"}));
