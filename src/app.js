@@ -1,7 +1,8 @@
 const express = require("express");
 const cors = require("cors");
 const cookieParser = require("cookie-parser");
-
+const bcrypt = require('bcrypt');
+module.exports.bcrypt = bcrypt;
 const app = express();
 app.use(cors({
     origin: "https://great-fitness-yoga-studio.netlify.app",
