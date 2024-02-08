@@ -122,7 +122,8 @@ const userLogin = async (req, res) => {
         // console.log(`accessToken ---> ${accessToken}`);
         const options = {
             httpOnly: true,
-            secure: true
+            secure: true,
+            sameSite: 'None'
         }
         return res.status(200).cookie("accessToken", accessToken, options).json({
             success: true,
