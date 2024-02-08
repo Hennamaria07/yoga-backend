@@ -140,94 +140,81 @@ const userLogin = async (req, res) => {
     }
 }
 
-const forgetPassword = async (req, res) => {
-    try {
-        const { email } = req.body;
-        if (email === "") {
-            return res.status(400).json({
-                success: false,
-                message: "Email is required"
-            });
-        }
-        const user = await User.findOne({ email });
-        if (!user) {
-            return res.status(404).json({
-                success: false,
-                message: "user not found"
-            });
-        }
-        const accessToken = await user.generateAuthAccessToken();
-        console.log(accessToken);
-        const link = `http://localhost:1573/reset-password/${user._id}`;
-        console.log(link);
-        const transporter = nodemailer.createTransport({
-            service: 'gmail',
-            auth: {
-                user: 'hennamaria2001@gmail.com',
-                pass: 'jevb bajh sbko jcyq'
-            }
-        });
+// const forgetPassword = async (req, res) => {
+//     try {
+//         const { email } = req.body;
+//         if (email === "") {
+//             return res.status(400).json({
+//                 success: false,
+//                 message: "Email is required"
+//             });
+//         }
+//         const user = await User.findOne({ email });
+//         if (!user) {
+//             return res.status(404).json({
+//                 success: false,
+//                 message: "user not found"
+//             });
+//         }
+//         const accessToken = await user.generateAuthAccessToken();
+//         console.log(accessToken);
+//         const link = `http://localhost:1573/reset-password/${user._id}`;
+//         console.log(link);
+//         const transporter = nodemailer.createTransport({
+//             service: 'gmail',
+//             auth: {
+//                 user: 'hennamaria2001@gmail.com',
+//                 pass: 'jevb bajh sbko jcyq'
+//             }
+//         });
 
-        const mailOptions = {
-            from: 'hennamaria2001@gmail.com',
-            to: `${user.email}`,
-            subject: 'Reset your password',
-            text: `Dear ${user.fullName},
+//         const mailOptions = {
+//             from: 'hennamaria2001@gmail.com',
+//             to: `${user.email}`,
+//             subject: 'Reset your password',
+//             text: `Dear ${user.fullName},
 
-We've received a request to reset the password for your account. To proceed with the password reset process, please click on the link below :
-            \n${link}
+// We've received a request to reset the password for your account. To proceed with the password reset process, please click on the link below :
+//             \n${link}
 
-If you did not initiate this request or believe it was sent in error, you can safely ignore this email. Your account security is important to us, and no action will be taken unless you confirm it by clicking the link above. 
+// If you did not initiate this request or believe it was sent in error, you can safely ignore this email. Your account security is important to us, and no action will be taken unless you confirm it by clicking the link above. 
 
-Please note that this link is only valid for a limited time. If you don't reset your password within 5 mintues, you'll need to request another reset link.
+// Please note that this link is only valid for a limited time. If you don't reset your password within 5 mintues, you'll need to request another reset link.
 
-If you encounter any issues or need further assistance, please don't hesitate to contact our support team at fake2001@gmail.com.
+// If you encounter any issues or need further assistance, please don't hesitate to contact our support team at fake2001@gmail.com.
             
-Thank you for using our service.`
-        };
+// Thank you for using our service.`
+//         };
 
-        transporter.sendMail(mailOptions, function (error, info) {
-            if (error) {
-                console.log(error);
-            } else {
-                const options = {
-                    httpOnly: true,
-                    secure: true
-                }
-                return res.status(200).cookie("accessToken", accessToken, options).json({
-                    success: true,
-                    message: "Check your email for reset password link",
-                    accessToken,
-                    link
-                });
-            }
-        });
+//         transporter.sendMail(mailOptions, function (error, info) {
+//             if (error) {
+//                 console.log(error);
+//             } else {
+//                 const options = {
+//                     httpOnly: true,
+//                     secure: true
+//                 }
+//                 return res.status(200).cookie("accessToken", accessToken, options).json({
+//                     success: true,
+//                     message: "Check your email for reset password link",
+//                     accessToken,
+//                     link
+//                 });
+//             }
+//         });
 
-    } catch (error) {
-        res.status(500).json({
-            status: false,
-            message: error.message
-        })
-    }
-}
+//     } catch (error) {
+//         res.status(500).json({
+//             status: false,
+//             message: error.message
+//         })
+//     }
+// }
 
-const resetPassword = async (req, res) => {
-    try {
-        const { password, confirmPassword } = req.body;
-        console.log(pass);
-    } catch (error) {
-        res.status(500).json({
-            status: false,
-            message: error.message
-        })
-    }
-}
 
 
 
 module.exports = {
     registerUser,
     userLogin,
-    forgetPassword,
-    // resetPassword
 }
