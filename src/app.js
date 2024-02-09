@@ -4,7 +4,7 @@ const cookieParser = require("cookie-parser");
 
 const app = express();
 app.use(cors({
-    origin: "https://hennamaria.netlify.app",
+    origin: "https://great-fitness-yoga-studio.netlify.app",
     credentials: true,
     optionsSuccessStatus: 200
 }));
