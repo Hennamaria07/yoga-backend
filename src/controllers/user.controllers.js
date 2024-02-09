@@ -3,8 +3,10 @@
 
 const User = require("../models/user.models.js");
 const nodemailer = require('nodemailer');
+const Session = require("../models/session.models.js")
 
 const registerUser = async (req, res) => {
+    console.log('hdsfhsdkfy');
     try {
         const { fullName, email, password, confirmPassword } = req.body;
         if ([fullName, email, password, confirmPassword].some((field) => field?.trim() === "")) {
@@ -210,7 +212,6 @@ const userLogin = async (req, res) => {
 //         })
 //     }
 // }
-
 
 
 
